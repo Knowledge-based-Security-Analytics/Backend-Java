@@ -3,9 +3,10 @@ build:
   script: mvn -Dmaven.test.skip=true -f pom.xml clean package
   artifacts:
     paths:
-      - target/
+      - target/*jar
   
-#test:
-#  image openjdk:11-jre-slim
+test:
+  image: openjdk:11-jre-slim
+  script: java -jar target/backen-java-0.0.1-SNAPSHOT.jar
 
     
