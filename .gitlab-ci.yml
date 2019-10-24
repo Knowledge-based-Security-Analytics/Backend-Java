@@ -1,4 +1,4 @@
 build:
+  image: maven:3.6.0-jdk-11slim AS build
   script:
-    - echo "Hello World"
-    - ls -la
+    
