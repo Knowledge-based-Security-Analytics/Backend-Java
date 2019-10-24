@@ -104,11 +104,11 @@ public class EventProcessor {
             String deploymentId = document.get("deploymentId").toString();
             EPDeployment epd = runtime.getDeploymentService().getDeployment(deploymentId);
             String[] dependencies = epd.getDeploymentIdDependencies();
-            document.put("deploymentIdDependencies", Arrays.asList(dependencies));
+            document.put("deploymentDependencies", Arrays.asList(dependencies));
             Document findByObjectId = new Document().append("_id", document.get("_id"));
             mongoDatabase.getCollection(STATEMENT_COLLECTION_NAME).findOneAndReplace(findByObjectId, document);
         }
-        LOG.info("Updated deploymentIdDependencies for all Statements in Database");
+        LOG.info("Updated deploymentDependencies for all Statements in Database");
     }
 
     EPRuntime getRuntime() {
