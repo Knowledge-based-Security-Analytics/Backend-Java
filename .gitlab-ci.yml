@@ -1,4 +1,4 @@
 build:
-  image: maven:3.6.0-jdk-11slim
+  image: maven:3.6.0-jdk-11-slim
   script: mvn -Dmaven.test.skip=true -f pom.xml clean package
     
