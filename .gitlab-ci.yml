@@ -18,7 +18,7 @@ deploy:
     - shell
   script:
     - docker build -t visualcepjava:0.1 .
-    - docker kill visualcepjava
+    - docker kill visualcepjava || true
     - docker run --rm -d --name=visualcepjava visualcepjava:0.1 -p 80:8080 --restart=always
  # script: java -jar target/backend-java-0.0.1-SNAPSHOT.jar
 
