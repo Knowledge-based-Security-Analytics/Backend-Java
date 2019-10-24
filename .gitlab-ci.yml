@@ -2,6 +2,8 @@ before_script:
   - docker info
 
 build_image:
+    variables:
+        CI_DEBUG_TRACE: "true"
   script:
     - docker build -t my-docker-image .
     - docker run my-docker-image /script/to/run/tests
