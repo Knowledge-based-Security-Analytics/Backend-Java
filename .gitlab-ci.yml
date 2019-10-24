@@ -18,7 +18,7 @@ deploy:
     - shell
   script:
     - docker build -t visualcepjava:0.1 .
-    - docker run --rm visualcepjava:0.1 -p 8080 --restart=on-failure:10
+    - docker run --rm -d visualcepjava:0.1 -p 8080 --restart=on-failure:10
  # script: java -jar target/backend-java-0.0.1-SNAPSHOT.jar
 
     
