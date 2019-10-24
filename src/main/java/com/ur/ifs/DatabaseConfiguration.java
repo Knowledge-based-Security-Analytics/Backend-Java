@@ -15,7 +15,7 @@ public class DatabaseConfiguration {
     private final String host = (System.getenv("MONGO_DB_HOST") != null) ? System.getenv("MONGO_DB_HOST") : "pcrw00159.uni-regensburg.de";
     private final int port = (System.getenv("MONGO_DB_PORT") != null) ? Integer.parseInt(System.getenv("MONGO_DB_PORT")) : 27017;
     private final String username = (System.getenv("MONGO_DB_USERNAME") != null) ? System.getenv("MONGO_DB_USERNAME") : "ifs";
-    private final String username = (System.getenv("MONGO_DB_PASSWORD") != null) ? System.getenv("MONGO_DB_PASSWORD") : "changeME0815";
+    private final String password = (System.getenv("MONGO_DB_PASSWORD") != null) ? System.getenv("MONGO_DB_PASSWORD") : "changeME0815";
 
     @Bean
     public MongoDatabase createMongoClient() {
