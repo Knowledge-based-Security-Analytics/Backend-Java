@@ -1,18 +1,22 @@
 stages:
   - build
-  - test
+  - deploy
 
 build:
   stage: build
+  tags: 
+    - docker
   image: maven:3.6.0-jdk-11-slim
   script: mvn -Dmaven.test.skip=true -f pom.xml clean package
   artifacts:
     paths:
       - target/*jar
   
-test:
-  stage: test
-  image: openjdk:11-jre-slim
-  script: java -jar target/backend-java-0.0.1-SNAPSHOT.jar
+deploy:
+  stage: deploy
+  tags:
+    - shell
+  script: ls -la
+ # script: java -jar target/backend-java-0.0.1-SNAPSHOT.jar
 
     
