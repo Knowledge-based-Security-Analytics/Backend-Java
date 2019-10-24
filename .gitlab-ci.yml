@@ -4,7 +4,7 @@
 build:
   stage: build
 #  image: maven:3.6.0-jdk-11-slim AS build
-#  script: mvn -Dmaven.test.skip=true -f clean package
+  script: echo "hallo"
 
 before_script:
   - docker info
