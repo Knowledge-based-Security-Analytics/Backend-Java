@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DatabaseConfiguration {
     private final String databaseName = "VisualCEP";
-    private final String host = (System.getenv("MONGO_DB_HOST") != null) ? System.getenv("MONGO_DB_HOST") : "localhost";
+    private final String host = (System.getenv("MONGO_DB_HOST") != null) ? System.getenv("MONGO_DB_HOST") : "pcrw00159.uni-regensburg.de";
     private final int port = (System.getenv("MONGO_DB_PORT") != null) ? Integer.parseInt(System.getenv("MONGO_DB_PORT")) : 27017;
 
     @Bean
