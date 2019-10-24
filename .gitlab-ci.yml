@@ -3,7 +3,7 @@ build:
   script: mvn -Dmaven.test.skip=true -f pom.xml clean package
   artifacts:
     paths:
-      - /home/app/target/
+      - target/
   
 #test:
 #  image openjdk:11-jre-slim
