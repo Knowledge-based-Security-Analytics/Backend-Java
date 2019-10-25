@@ -1,4 +1,4 @@
-FROM openjdk:7
+FROM openjdk:latest
 COPY target/ target/
 EXPOSE 8082
 #RUN apt-get update
