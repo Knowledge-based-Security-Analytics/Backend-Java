@@ -1,4 +1,4 @@
-FROM tomcat:latest
+FROM openjdk:7
 COPY target/ target/
 EXPOSE 8082
 RUN apt-get update
