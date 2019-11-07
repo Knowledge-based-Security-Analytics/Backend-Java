@@ -14,12 +14,14 @@ build:
   
 deploy:
   stage: deploy
+  only:
+    - master
   tags:
     - shell
   script:
-    - docker build -t visualcepjava:0.1 .
-    - docker kill visualcepjava || true
-    - docker rm visualcepjava || true
-    - docker run -p 8082:8082 --restart=always -d --name=visualcepjava visualcepjava:0.1
+    - docker build -t visual-cep-pattern_java:0.1 .
+    - docker kill visual-cep-pattern_java || true
+    - docker rm visual-cep-pattern_java || true
+    - docker run -p 192.168.2.116:8082:8082 --restart=always -d --name=visual-cep-pattern_java visual-cep-pattern_java:0.1
 
     
