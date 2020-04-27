@@ -28,7 +28,7 @@ import static com.ur.ifs.RestfulController.STATEMENT_COLLECTION_NAME;
 @Component
 public class EventProcessor {
 
-    final static String KAFKA_SERVER = "192.168.2.116:9092";
+    final static String KAFKA_SERVER = "192.168.2.176:9092";
     private final static String GROUP_ID = "EsperConsumer";
     private static final Logger LOG = LoggerFactory.getLogger(EventProcessor.class);
     private Properties kafkaInputProps = new Properties();
