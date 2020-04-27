@@ -14,8 +14,8 @@ public class DatabaseConfiguration {
     private final String databaseName = "VisualCEP";
     private final String host = (System.getenv("MONGO_DB_HOST") != null) ? System.getenv("MONGO_DB_HOST") : "192.168.2.176";
     private final int port = (System.getenv("MONGO_DB_PORT") != null) ? Integer.parseInt(System.getenv("MONGO_DB_PORT")) : 27017;
-    private final String username = (System.getenv("MONGO_DB_USERNAME") != null) ? System.getenv("MONGO_DB_USERNAME") : "ifs";
-    private final String password = (System.getenv("MONGO_DB_PASSWORD") != null) ? System.getenv("MONGO_DB_PASSWORD") : "changeME0815";
+    private final String username = (System.getenv("MONGO_DB_USERNAME") != null) ? System.getenv("MONGO_DB_USERNAME") : "praxisSem";
+    private final String password = (System.getenv("MONGO_DB_PASSWORD") != null) ? System.getenv("MONGO_DB_PASSWORD") : "sose20_praxissem_dzupfer";
 
     @Bean
     public MongoDatabase createMongoClient() {
