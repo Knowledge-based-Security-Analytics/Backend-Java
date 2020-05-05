@@ -7,6 +7,7 @@ import com.espertech.esper.runtime.client.EPRuntime;
 import com.espertech.esper.runtime.client.EPRuntimeProvider;
 import com.espertech.esperio.kafka.EsperIOKafkaConfig;
 import com.espertech.esperio.kafka.EsperIOKafkaInputAdapterPlugin;
+import com.espertech.esperio.kafka.EsperIOKafkaInputSubscriberByTopicList;
 import com.espertech.esperio.kafka.EsperIOKafkaOutputAdapterPlugin;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
@@ -49,7 +50,10 @@ public class EventProcessor {
         kafkaInputProps.put(ConsumerConfig.METADATA_MAX_AGE_CONFIG, "1000");
         kafkaInputProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         //Kafka Input Adapter Configuration
-        kafkaInputProps.put(EsperIOKafkaConfig.INPUT_SUBSCRIBER_CONFIG, EsperIOKafkaInputSubscriberCustom.class.getName());
+        // kafkaInputProps.put(EsperIOKafkaConfig.INPUT_SUBSCRIBER_CONFIG, EsperIOKafkaInputSubscriberCustom.class.getName());
+        kafkaInputProps.put(EsperIOKafkaConfig.INPUT_SUBSCRIBER_CONFIG, EsperIOKafkaInputSubscriberByTopicList.class.getName());
+        this.addKafkaInputTopics();
+
         kafkaInputProps.put(EsperIOKafkaConfig.INPUT_PROCESSOR_CONFIG, EsperIOKafkaInputProcessorJsonCustom.class.getName());
         //Only set this one if internal Timer is disabled in Runtime Configuration
         kafkaInputProps.put(EsperIOKafkaConfig.INPUT_TIMESTAMPEXTRACTOR_CONFIG, EsperIOKafkaInputTimestampExtractorCustom.class.getName());
@@ -113,5 +117,21 @@ public class EventProcessor {
 
     EPRuntime getRuntime() {
         return runtime;
+    }
+
+    private void addKafkaInputTopics(){
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("eventType", true);
+
+        MongoCursor<Document> cursor =  mongoDatabase.getCollection(STATEMENT_COLLECTION_NAME).find(whereQuery).iterator();
+        String topicList = "";
+        while(cursor.hasNext()){
+            Document document = cursor.next();
+            String topic = document.get("name").toString();
+            if(topicList.length() > 0)
+                topicList += ",";
+            topicList += topic;
+        }
+        this.kafkaInputProps.put(EsperIOKafkaConfig.TOPICS_CONFIG, topicList);
     }
 }
