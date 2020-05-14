@@ -50,9 +50,9 @@ public class EventProcessor {
         kafkaInputProps.put(ConsumerConfig.METADATA_MAX_AGE_CONFIG, "1000");
         kafkaInputProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         //Kafka Input Adapter Configuration
-        // kafkaInputProps.put(EsperIOKafkaConfig.INPUT_SUBSCRIBER_CONFIG, EsperIOKafkaInputSubscriberCustom.class.getName());
-        kafkaInputProps.put(EsperIOKafkaConfig.INPUT_SUBSCRIBER_CONFIG, EsperIOKafkaInputSubscriberByTopicList.class.getName());
-        this.addKafkaInputTopics();
+        kafkaInputProps.put(EsperIOKafkaConfig.INPUT_SUBSCRIBER_CONFIG, EsperIOKafkaInputSubscriberCustom.class.getName());
+        // kafkaInputProps.put(EsperIOKafkaConfig.INPUT_SUBSCRIBER_CONFIG, EsperIOKafkaInputSubscriberByTopicList.class.getName());
+        // this.addKafkaInputTopics();
 
         kafkaInputProps.put(EsperIOKafkaConfig.INPUT_PROCESSOR_CONFIG, EsperIOKafkaInputProcessorJsonCustom.class.getName());
         //Only set this one if internal Timer is disabled in Runtime Configuration
